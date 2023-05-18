@@ -40,6 +40,7 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loading,
+        emailSignUp,
         emailLogin,
         googleLogin,
         logOut

@@ -1,24 +1,32 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const { emailSignUp,
-        googleLogIn} = useContext(AuthContext);
-    
+        googleLogIn } = useContext(AuthContext);
+
     const handleEmailSignUp = (event) => {
         event.preventDefault()
         const form = event.target;
+        const name = form.name.value
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
-        
+        const photo = form.photo.value
+        console.log(name, email, password);
+        emailSignUp(email, password)
+            .then(result => {
+                console.log(result.user)
+            })
+        .catch(error => console.log(error.message))
+
     }
 
     const handleGoogleSignUp = () => {
         googleLogIn()
             .then(result => {
-            console.log(result.user)
-        })
+                console.log(result.user)
+            })
     }
     return (
         <div className="hero h-[90vh]  " >
@@ -35,19 +43,25 @@ const SignUp = () => {
                         </div>
                         <form onSubmit={handleEmailSignUp} className="form-control mb-2">
 
-                        <div className="form-control mb-4">
-                            <input type="email" name='email' placeholder="Email" className="input input-bordered rounded-lg" /></div>
+                            <div className="form-control mb-4">
+                                <input type="text" name='name' placeholder="Name" className="input input-bordered rounded-lg" />
+                            </div>
+                            <div className="form-control mb-4">
+                                <input type="email" name='email' placeholder="Email" className="input input-bordered rounded-lg" />
+                            </div>
+                            <div className="form-control mb-4">
+                                <input type="password" name='password' placeholder="Password" className="input input-bordered rounded-lg" />
+                            </div>
                             <div className="form-control">
-
-                            <input type="password" name='password' placeholder="Password" className="input input-bordered rounded-lg" />
-
-                        </div>
-                        <div className="form-control mt-6">
-                            <button type='submit' className="btn rounded-lg btn-accent text-white">SignUp</button>
-                        </div>
+                                <input type="text" name='photo' placeholder="photo" className="input input-bordered rounded-lg" />
+                            </div>
+                            <div className="form-control mt-6">
+                                <button type='submit' className="btn rounded-lg btn-accent text-white">SignUp</button>
+                            </div>
 
                         </form>
-
+                        <p>Already have an Account? <Link to='/login' className='text-accent font-bold'>Click to LogIn</Link></p>
+                        
                         <p className='w-full font-medium text-center mt-4'>Or</p>
                         <div className="flex justify-center mt-2">
                             <button onClick={handleGoogleSignUp} className="btn btn-outline   rounded-lg "><img className='w-9 mr-1' src="https://i.ibb.co/jR7PDsb/google-logo-9824.png" alt="" /> Continue with Google</button>

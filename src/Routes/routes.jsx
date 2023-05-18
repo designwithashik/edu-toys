@@ -7,6 +7,7 @@ import AddAToy from "../components/Toys/AddAToy";
 import Blogs from "../components/Blogs";
 import PrivateRoute from "./PrivateRoute";
 import Login from "../Authentication/Login";
+import SignUp from "../Authentication/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <Login/>
+            },
+            {
+                path: 'sign-up',
+                element: <SignUp/>
             }
         ]
     }

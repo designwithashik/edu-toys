@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { emailLogin,
@@ -11,7 +12,12 @@ const Login = () => {
         const email = form.email.value
         const password = form.password.value
         console.log(email, password)
-        
+        emailLogin(email, password)
+            .then(result => {
+            console.log(result.user)
+            })
+        .catch(error=>console.log(error))
+
     }
 
     const handleGoogleLogin = () => {
@@ -47,7 +53,7 @@ const Login = () => {
                         </div>
 
                         </form>
-
+                        <p>Don't have an Account? <Link to='/sign-up' className='text-accent font-bold'>Click to Sign Up</Link></p>
                         <p className='w-full font-medium text-center mt-4'>Or</p>
                         <div className="flex justify-center mt-2">
                             <button onClick={handleGoogleLogin} className="btn btn-outline   rounded-lg "><img className='w-9 mr-1' src="https://i.ibb.co/jR7PDsb/google-logo-9824.png" alt="" /> Continue with Google</button>
