@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { emailLogin,
-        googleLogin} = useContext(AuthContext);
+        googleLogin } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate= useNavigate()
+    let cameFrom = location.state?.from?.pathname || "/";
+
     
     const handleLogin = (event) => {
         event.preventDefault()
@@ -14,7 +18,8 @@ const Login = () => {
         console.log(email, password)
         emailLogin(email, password)
             .then(result => {
-            console.log(result.user)
+                console.log(result.user)
+                navigate(cameFrom, {replace: true})
             })
         .catch(error=>console.log(error))
 
@@ -23,7 +28,9 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-            console.log(result.user)
+                console.log(result.user)
+                navigate(cameFrom, {replace: true})
+                
         })
     }
     return (

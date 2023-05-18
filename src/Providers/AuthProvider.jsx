@@ -3,6 +3,8 @@ export const AuthContext = createContext(null);
 import {GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
 import { app } from '../firebase/firebase.config';
 const AuthProvider = ({ children }) => {
+
+    // Authentication
     const [user, setUser] = useState(null)
     const [loading, setLoading]= useState(true)
     const auth = getAuth(app);
@@ -37,13 +39,24 @@ const AuthProvider = ({ children }) => {
     },[])
     
     
+
+    // Toys Data
+    const[toys, setToys]= useState([])
+    useEffect(() => {
+        fetch('http://localhost:3000/toys')
+            .then(res => res.json())
+            .then(data => setToys(data))
+    }, [])
+
+
     const authInfo = {
         user,
         loading,
         emailSignUp,
         emailLogin,
         googleLogin,
-        logOut
+        logOut,
+        toys
     }
     return (
         <AuthContext.Provider value={authInfo}>

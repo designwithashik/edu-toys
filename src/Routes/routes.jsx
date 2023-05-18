@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
-import Home from "../components/Home";
+import Home from "../components/Home/Home";
 import AllToys from "../components/Toys/AllToys";
 import MyToys from "../components/Toys/MyToys";
 import AddAToy from "../components/Toys/AddAToy";
@@ -8,6 +8,7 @@ import Blogs from "../components/Blogs";
 import PrivateRoute from "./PrivateRoute";
 import Login from "../Authentication/Login";
 import SignUp from "../Authentication/SignUp";
+import SingleToyDetails from "../components/Toys/SingleToyDetails";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,11 @@ export const router = createBrowserRouter([
             {
                 path: 'sign-up',
                 element: <SignUp/>
+            },
+            {
+                path: 'toy/:id',
+                element: <PrivateRoute><SingleToyDetails /></PrivateRoute>,
+                loader: ({params})=>fetch(``)
             }
         ]
     }
