@@ -4,7 +4,6 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
     const location = useLocation()
-    console.log('ariving')
     const {loading, user} = useContext(AuthContext)
     if (loading) {
         return <div className='flex w-full justify-center h-[70vh] items-center'>
@@ -14,8 +13,7 @@ const PrivateRoute = ({ children }) => {
     if (user) {
         return <>{children}</>
     }
-   
-    
+
     return <Navigate to='/login' state={{from: location}} replace></Navigate>
 };
 
