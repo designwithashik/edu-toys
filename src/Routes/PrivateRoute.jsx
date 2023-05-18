@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
-    const {loading} = useContext(AuthContext)
+    const {loading, user} = useContext(AuthContext)
     if (loading) {
         return <div className='flex w-full justify-center h-[70vh] items-center'>
             <progress className="progress progress-accent bg-[#FF1276]  h-8  w-72"></progress>
@@ -11,7 +11,7 @@ const PrivateRoute = ({ children }) => {
         </div>
     }
     if (user) {
-        return {children}
+        return <>{children}</>
     }
     <Navigate to='/login'></Navigate>
 };
