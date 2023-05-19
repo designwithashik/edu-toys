@@ -1,11 +1,16 @@
 import React from 'react';
 import ToysTab from './ToysTab';
+import Banner from './Banner';
+import TopPicks from './TopPicks';
 
 const Home = () => {
     return (
         <div>
-            <h2>Edu Toys</h2>
-            <ToysTab/>
+            <Banner/>
+
+            <ToysTab />
+            
+            <TopPicks/> 
         </div>
     );
 };
