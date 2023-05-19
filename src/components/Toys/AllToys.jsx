@@ -6,6 +6,7 @@ const AllToys = () => {
     const { toys, user } = useContext(AuthContext)
     const location = useLocation();
     const navigate = useNavigate()
+    console.log(toys)
     
     return (
         <div>

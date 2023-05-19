@@ -12,7 +12,7 @@ const Header = () => {
     return (
         <div className="navbar bg-base-100">
  <div className="flex-1">
-                <Link to='/' className=" font-bold normal-case text-accent text-xl">edu<span className='text-[#FF1276] font-bold'>TOYS</span></Link>
+                <Link to='/' className=" font-bold normal-case text-accent text-xl">Edu<span className='text-[#FF1276] font-bold'>Toys</span></Link>
                 <ul className="menu menu-horizontal px-1">
                      <li><ActiveLink to='/all-toys'>All Toys</ActiveLink></li>
                      {user && <><li><ActiveLink to='/my-toys'>My Toys</ActiveLink></li>
