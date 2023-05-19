@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { AuthContext } from '../../Providers/AuthProvider';
+import ToyCard from './ToyCard';
 
 const ToysTab = () => {
     const {toys} = useContext(AuthContext)
@@ -10,38 +11,38 @@ const ToysTab = () => {
   return (
     <div className="p-4">
 
-      <h2 className='text-4xl font-bold text-center'>Shop By Category</h2>
+      <h2 className='text-4xl mb-14 font-bold text-center'>Shop By Category</h2>
       <Tabs>
-        <TabList className="flex space-x-4">
-          <Tab className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer">
+        <TabList className="flex font-semibold space-x-4 mb-3">
+          <Tab className="px-4 py-2 bg-gray-500 text-white rounded-full cursor-pointer">
             Science Toys
           </Tab>
-          <Tab className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer">
+          <Tab className="px-4 py-2 bg-accent text-white rounded-full cursor-pointer">
             Engineering Toys
           </Tab>
-          <Tab className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer">
+          <Tab className="px-4 py-2 bg-[#FF1276] text-white rounded-full cursor-pointer">
             Language Toys
           </Tab>
         </TabList>
 
         <TabPanel>
-          <div className="p-4 bg-gray-100 rounded">
-                      {ScienceToys.map(languageToy => <>
-                          <h2>{languageToy.name}</h2>
+          <div className="p-4 bg-gray-500 rounded-box  grid md:grid-cols-2 lg-grid-cols-3 gap-5">
+                      {ScienceToys.map(scienceToy => <>
+                          <ToyCard toy={scienceToy}></ToyCard>
                       </>)}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="p-4 bg-gray-100 rounded">
-                      {EngineeringToys.map(languageToy => <>
-                          <h2>{languageToy.name}</h2>
+          <div className="p-4  rounded-box bg-accent  grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                      {EngineeringToys.map(engineeringToy => <>
+                        <ToyCard toy={engineeringToy}></ToyCard>
                       </>)}
           </div>
         </TabPanel>
-        <TabPanel>
-          <div className="p-4 bg-gray-100 rounded">
-                      {languageToys.map(languageToy => <>
-                          <h2>{languageToy.name}</h2>
+        <TabPanel >
+          <div className="p-4 rounded-box bg-[#ff127569] grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {languageToys.map(languageToy => <>
+                      <ToyCard toy={languageToy}></ToyCard>
                       </>)}
           </div>
         </TabPanel>

@@ -6,7 +6,10 @@ const TopPicks = () => {
 
     return (
         <div>
-            <h2 className='text-center font-bold text-[#FF1276]'>Top Picks Today</h2>
+            <h2 className='text-3xl font-bold '>Popular Products</h2>
+            <p className='text-gray-500'>A toy with learning capacity is a great thing for your child's mental development. Try any product at affordable price </p>
+
+            <h2 className='text-center font-bold text-[#FF1276]'>Top Picks</h2>
             <div className="carousel bg-accent  carousel-center max-w-full p-4 space-x-4 rounded-box">
                 {toys.slice(0,5).map(toy=><div className="carousel-item">
                     
