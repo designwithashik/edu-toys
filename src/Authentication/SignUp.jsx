@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
     const { emailSignUp,
@@ -16,6 +17,10 @@ const SignUp = () => {
         console.log(name, email, password);
         emailSignUp(email, password)
             .then(result => {
+                updateProfile(result.user, {
+                    displayName: `${name}`,
+                    photoURL: `${photo}`
+                });
                 console.log(result.user)
             })
         .catch(error => console.log(error.message))
