@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Login from "../Authentication/Login";
 import SignUp from "../Authentication/SignUp";
 import SingleToyDetails from "../components/Toys/SingleToyDetails";
+import UpdateAToy from "../components/Toys/UpdateAToy";
 
 export const router = createBrowserRouter([
     {
@@ -47,6 +48,11 @@ export const router = createBrowserRouter([
                 path: 'toy/:id',
                 element: <PrivateRoute><SingleToyDetails /></PrivateRoute>,
                 loader: ({params})=>fetch(`http://localhost:3000/toy/${params.id}`)
+            },
+            {
+                path: 'update-toy/:id',
+                element: <PrivateRoute><UpdateAToy /></PrivateRoute>,
+                
             }
         ]
     }
