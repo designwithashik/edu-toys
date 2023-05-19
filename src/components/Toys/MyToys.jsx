@@ -4,12 +4,25 @@ import { Link } from 'react-router-dom';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
-    const[toys, setToys]=useState([])
+    const [toys, setToys] = useState([])
+    const [control, setControl] = useState(false)
     useEffect(() => {
         fetch(`http://localhost:3000/toys?email=${user.email}`)
             .then(res => res.json())
         .then(data=>setToys(data))
-    }, [])
+    }, [control])
+
+    const handleDelete = (id) => {
+        fetch(`http://localhost:3000/toy/${id}`, {
+            method: 'DELETE',
+        
+        })
+            .then(res => res.json())
+            .then(data => {
+            setControl(!control)
+        })
+
+    }
     console.log(toys)
     return (
         <div>
@@ -27,6 +40,7 @@ const MyToys = () => {
         <th>Name</th>
         <th>Job</th>
         <th>Favorite Color</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -58,6 +72,7 @@ const MyToys = () => {
             <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
           </td>
           <td>Purple</td>
+          <td><button onClick={()=>handleDelete(toy._id)}>Delete</button></td>
           <th>
             <Link to={`/update-toy/${toy._id}`}><button className="btn btn-ghost btn-xs">Update details</button></Link>
           </th>
