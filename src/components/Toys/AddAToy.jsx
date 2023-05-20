@@ -99,7 +99,7 @@ const AddAToy = () => {
                         >
                             <option disabled value=''>Which Category?</option>
                             <option value="Language Toys">Language Toys</option>
-                            <option value="Math Toys">Math Toys</option>
+                            <option value="Science Toys">Science Toys</option>
                             <option value="Engineering Toys">Engeneeering Toys</option>
           </select>
         </div>
