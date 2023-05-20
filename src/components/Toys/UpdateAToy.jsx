@@ -181,12 +181,12 @@ const UpdateAToy = () => {
             className="border border-gray-300 rounded px-3 py-2 w-full"
             id="description"
             name="description"
-                                rows={4}
+                                rows={3}
                                 defaultValue={description}
           />
         </div>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="btn text-white rounded border-none font-bold bg-[#FF1276]"
           type="submit"
         >
           Submit

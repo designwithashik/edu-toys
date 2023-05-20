@@ -12,7 +12,9 @@ const AllToys = () => {
     
     
     return (
-        <div className='overflow-scroll'>
+        <div className='overflow-x-scroll lg:overflow-hidden'>
+      <h2 className="text-3xl  text-center font-bold mb-4">All Toys</h2>
+
             <table className="table w-full ">
     {/* head */}
     <thead>
