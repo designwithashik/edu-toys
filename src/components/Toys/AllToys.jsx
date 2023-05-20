@@ -12,8 +12,8 @@ const AllToys = () => {
     
     
     return (
-        <div>
-            <table className="table w-full">
+        <div className='overflow-scroll'>
+            <table className="table w-full ">
     {/* head */}
     <thead>
       <tr>

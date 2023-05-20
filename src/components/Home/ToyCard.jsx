@@ -5,7 +5,7 @@ const ToyCard = ({ toy }) => {
     const { name, picture, price, rating } = toy;
     return (
         
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card max-w-96 bg-base-100 shadow-xl">
   <div className="card-body">
     <h2 className="card-title text-accent w-full">{name}!</h2>
                     <p><span className='font-bold'>Price:</span> {price}$</p>

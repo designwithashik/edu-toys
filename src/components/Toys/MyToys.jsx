@@ -25,7 +25,7 @@ const MyToys = () => {
     }
     
     return (
-        <div>
+        <div className='overflow-scroll'>
             <div className="overflow-x-auto w-full">
             <table className="table w-full">
     {/* head */}

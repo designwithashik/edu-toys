@@ -13,7 +13,7 @@ const ToysTab = () => {
 
       <h2 className='text-4xl mb-14 font-bold text-center'>Shop By Category</h2>
       <Tabs>
-        <TabList className="flex font-semibold space-x-4 mb-3">
+        <TabList className="flex flex-col gap-4 md:flex-row font-semibold space-x-4 mb-3">
         <Tab className="px-4 py-2 bg-[#FF1276] text-white rounded-full cursor-pointer">
             Language Toys
           </Tab>

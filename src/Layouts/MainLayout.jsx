@@ -6,7 +6,7 @@ import Footer from '../components/Shared/Footer';
 const MainLayout = () => {
     return (
         <div>
-            <div  className='max-w-screen-xl min-h-[calc(100vh-156px)] mx-auto'>
+            <div  className='max-w-screen-xl min-h-[calc(100vh-156px)] px-5 md:px-14 mx-auto'>
             <Header />
             <Outlet />
             </div>
