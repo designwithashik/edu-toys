@@ -7,21 +7,56 @@ const AllToys = () => {
     const location = useLocation();
     const navigate = useNavigate()
     console.log(toys)
+
+
+    
     
     return (
         <div>
-            <h2>All Toys</h2>
-            <div>
-                {toys.map(toy => <><h2>{toy.name}</h2> <Link to={`/toy/${toy._id}`}>View Details</Link></>)}
-            </div>
-            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box relative">
-                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+            <table className="table w-full">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>Toy Name</th>
+        <th>Seller</th>
+        <th>Sub-category</th>
+        <th>Price</th>
+        <th>Available Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {/* toys row */}
+                        {toys.map(toy => {
+        return  <tr>
+         
+          <td>
+            <div className="flex items-center space-x-3">
+              <div className="avatar">
+                <div className="mask mask-squircle w-12 h-12">
+                  <img src={toy?.picture} />
                 </div>
+              </div>
+              <div>
+                          <div className="font-bold">{toy.name}</div>
+               
+              </div>
             </div>
+          </td>
+          <td>
+                {toy?.sellerName}
+          </td>
+            <td>{toy?.subCategory}</td>
+            <td>{toy?.price}$</td>
+            <td>{toy?.quantity}</td>
+          <td>
+            <Link to={`/update-toy/${toy._id}`}><button className="btn btn-accent btn-xs">View details</button></Link>
+          </td>
+        </tr>
+      })}
+    </tbody>
+    
+  </table>
 
         </div>
     );

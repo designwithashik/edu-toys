@@ -23,36 +23,28 @@ const MyToys = () => {
         })
 
     }
-    console.log(toys)
+    
     return (
         <div>
-            <h2>My Toys</h2>
             <div className="overflow-x-auto w-full">
-  <table className="table w-full">
+            <table className="table w-full">
     {/* head */}
     <thead>
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Toy Name</th>
+        <th>Seller</th>
+        <th>Sub-category</th>
+        <th>Price</th>
+        <th>Available Quantity</th>
         <th></th>
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody className=''>
       {/* toys row */}
                         {toys.map(toy => {
         return  <tr>
-          <th>
-            <label>
-              <input type="checkbox" className="checkbox" />
-            </label>
-          </th>
+         
           <td>
             <div className="flex items-center space-x-3">
               <div className="avatar">
@@ -62,20 +54,23 @@ const MyToys = () => {
               </div>
               <div>
                           <div className="font-bold">{toy.name}</div>
-                <div className="text-sm opacity-50">United States</div>
+               
               </div>
             </div>
           </td>
           <td>
-            Zemlak, Daniel and Leannon
-            <br/>
-            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+            <p className='text-sm'>
+            Name: {toy?.sellerName} <br />
+                Email: {toy?.sellerEmail}
+                </p>
           </td>
-          <td>Purple</td>
-          <td><button onClick={()=>handleDelete(toy._id)}>Delete</button></td>
-          <th>
-            <Link to={`/update-toy/${toy._id}`}><button className="btn btn-ghost btn-xs">Update details</button></Link>
-          </th>
+            <td>{toy?.subCategory}</td>
+            <td>{toy?.price}$</td>
+            <td>{toy?.quantity}</td>
+          <td>
+            <Link to={`/update-toy/${toy._id}`}><button className="btn btn-accent btn-xs">Update</button></Link>
+          </td>
+          <td><button onClick={()=>handleDelete(toy._id)} className='btn btn-sm btn-error'>X</button></td>
         </tr>
       })}
     </tbody>
