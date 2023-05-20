@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -9,18 +10,43 @@ const MyToys = () => {
     useEffect(() => {
         fetch(`http://localhost:3000/toys?email=${user.email}`)
             .then(res => res.json())
-        .then(data=>setToys(data))
+          .then(data => {
+            setToys(data)
+          })
     }, [control])
 
-    const handleDelete = (id) => {
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
         fetch(`http://localhost:3000/toy/${id}`, {
-            method: 'DELETE',
+          method: 'DELETE',
+      
+      })
+          .then(res => res.json())
+          .then(data => {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          setControl(!control)
+      })
+
         
-        })
-            .then(res => res.json())
-            .then(data => {
-            setControl(!control)
-        })
+      }
+    })
+    
+
+
+       
 
     }
     

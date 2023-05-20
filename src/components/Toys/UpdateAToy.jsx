@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateAToy = () => {
     const [toy, setToy] = useState([])
@@ -58,7 +59,16 @@ const UpdateAToy = () => {
                 body: JSON.stringify(toy)
             })
                 .then(res => res.json())
-            .then(data=>console.log(data))
+              .then(data => {
+                console.log(data)
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Your toy has been updated',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              })
        
     }
     return (
@@ -189,7 +199,7 @@ const UpdateAToy = () => {
           className="btn text-white rounded border-none font-bold bg-[#FF1276]"
           type="submit"
         >
-          Submit
+          Update
         </button>
       </form>
     </div>
