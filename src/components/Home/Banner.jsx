@@ -7,7 +7,7 @@ const Banner = () => {
         <div className='flex flex-col md:flex-row gap-9 mt-7 mb-28'>
             <div className='w-full'>
                 <h2 className=' text-5xl  text-purple-600'>Fun to learn,</h2>
-                <h2 className='text-accent text-5xl my-3'>Enjoy Learning Edu<span className='text-[#FF1276]'>Toys</span></h2>
+                <h2 className='text-accent text-5xl my-3'>Enjoy Learning</h2>
                 <p className='text-gray-500 my-7'>A toy with learning capacity is a great thing for your child's mental development. So why not make the best decision for your child today? </p>
                 <Link className='btn text-white rounded border-none font-bold bg-[#FF1276]' to='/all-toys'><button>SHOP NOW</button></Link>
             </div> 

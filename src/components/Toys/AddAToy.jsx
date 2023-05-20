@@ -58,7 +58,7 @@ const AddAToy = () => {
     return (
         <div>
             <div className="max-w-xl mx-auto p-4 bg-white shadow rounded-xl">
-      <h2 className="text-3xl  text-center font-bold mb-4">Add a Toy</h2>
+      <h2 className="text-3xl  text-center font-bold mb-4 text-[#FF1276]">Add a Toy</h2>
       <form onSubmit={handleToyAdding}>
         <div className="mb-4">
           <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="name">

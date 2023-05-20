@@ -4,13 +4,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { emailLogin,
-        googleLogin } = useContext(AuthContext);
+        googleLogin, error, setError } = useContext(AuthContext);
     const location = useLocation();
     const navigate= useNavigate()
     let cameFrom = location.state?.from?.pathname || "/";
 
     
     const handleLogin = (event) => {
+        setError('')
         event.preventDefault()
         const form = event.target;
         const email = form.email.value
@@ -21,21 +22,23 @@ const Login = () => {
                 console.log(result.user)
                 navigate(cameFrom, {replace: true})
             })
-        .catch(error=>console.log(error))
+        .catch(error=>setError('Invalid user login! Please try again'))
+
 
     }
 
     const handleGoogleLogin = () => {
+        setError('')
         googleLogin()
             .then(result => {
                 console.log(result.user)
                 navigate(cameFrom, {replace: true})
-                
-        })
+            })
+        .catch(error=>setError('Unexpected Error! Please try again'))
     }
     return (
-        <div className="hero h-[90vh]  " >
-            <div className="hero-content flex-col lg:flex-row">
+        <div className="hero min-h-[calc(100vh-300px)]" >
+            <div className="hero-content flex items-center flex-col md:flex-row">
                 <div className="flex justify-between w-full">
                     <img className='w-[70%] mx-auto lg:mx-0' src="https://i.ibb.co/yVWbnK1/Pngtree-illustration-of-kids-playing-games-4737644.png" alt="" />
                 </div>
@@ -60,6 +63,7 @@ const Login = () => {
                         </div>
 
                         </form>
+                        <p className='text-error font-semibold'>{error}</p>
                         <p>Don't have an Account? <Link to='/sign-up' className='text-accent font-bold'>Click to Sign Up</Link></p>
                         <p className='w-full font-medium text-center mt-4'>Or</p>
                         <div className="flex justify-center mt-2">

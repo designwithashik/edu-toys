@@ -7,7 +7,7 @@ const ToyCard = ({ toy }) => {
         
             <div className="card max-w-96 bg-base-100 shadow-xl">
   <div className="card-body">
-    <h2 className="card-title text-accent w-full">{name}!</h2>
+    <h2 className="card-title text-accent w-full">{name}</h2>
                     <p><span className='font-bold'>Price:</span> {price}$</p>
           <p><span className='font-bold'>Rating:</span> {rating}</p>
           <div><Link className='btn btn-sm rounded-xl text-white border-none bg-[#FF1276]' to={`/toy/${toy._id}`}>View Details</Link></div>

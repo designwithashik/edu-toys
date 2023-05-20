@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const { emailSignUp,
-        googleLogIn } = useContext(AuthContext);
+        googleLogIn, error, setError } = useContext(AuthContext);
 
     const handleEmailSignUp = (event) => {
+        setError('')
         event.preventDefault()
         const form = event.target;
         const name = form.name.value
@@ -15,16 +17,27 @@ const SignUp = () => {
         const password = form.password.value
         const photo = form.photo.value
         console.log(name, email, password);
+        if (password.length < 6) {
+            setError('Password must be least 6 characters !')
+            return
+        }
         emailSignUp(email, password)
             .then(result => {
                 updateProfile(result.user, {
                     displayName: `${name}`,
                     photoURL: `${photo}`
                 });
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Your account has been created',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
                 console.log(result.user)
             })
-        .catch(error => console.log(error.message))
-
+        .catch(error => setError(`${error.message.split(':')[1]}`))
+            form.reset()
     }
 
     const handleGoogleSignUp = () => {
@@ -34,8 +47,8 @@ const SignUp = () => {
             })
     }
     return (
-        <div className="hero h-[90vh]  " >
-            <div className="hero-content flex-col lg:flex-row">
+        <div className="hero min-h-[calc(100vh-300px)]  " >
+            <div className="hero-content flex-col md:flex-row">
                 <div className="flex justify-between w-full">
                     <img className='w-[70%] mx-auto lg:mx-0' src="https://i.ibb.co/yVWbnK1/Pngtree-illustration-of-kids-playing-games-4737644.png" alt="" />
                 </div>
@@ -56,6 +69,7 @@ const SignUp = () => {
                             </div>
                             <div className="form-control mb-4">
                                 <input type="password" name='password' placeholder="Password" className="input input-bordered rounded-lg" />
+                                <p className='text-error font-semibold'>{error}</p>
                             </div>
                             <div className="form-control">
                                 <input type="text" name='photo' placeholder="photo" className="input input-bordered rounded-lg" />

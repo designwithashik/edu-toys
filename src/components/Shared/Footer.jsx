@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className=" bg-purple-900 ">
             <div className='max-w-screen-xl mx-auto text-neutral-content footer p-10'><div>
             <Link to='/' className=" font-bold normal-case text-accent text-xl">Edu<span className='text-[#FF1276] font-bold'>Toys</span></Link>
-          <p>EduToys Ltd.<br/>Copyright © 2023 - All right reserved by EduToys Ltd
+          <p>Copyright © 2023 - All right reserved by EduToys Ltd
 
 </p>
         </div> 
