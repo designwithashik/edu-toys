@@ -50,7 +50,7 @@ const AllToys = () => {
             <td>{toy?.price}$</td>
             <td>{toy?.quantity}</td>
           <td>
-            <Link to={`/update-toy/${toy._id}`}><button className="btn btn-accent btn-xs">View details</button></Link>
+            <Link to={`/toy/${toy._id}`}><button className="btn btn-accent btn-xs">View details</button></Link>
           </td>
         </tr>
       })}
