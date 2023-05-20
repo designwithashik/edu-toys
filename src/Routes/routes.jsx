@@ -10,11 +10,13 @@ import Login from "../Authentication/Login";
 import SignUp from "../Authentication/SignUp";
 import SingleToyDetails from "../components/Toys/SingleToyDetails";
 import UpdateAToy from "../components/Toys/UpdateAToy";
+import ErrorPage from "../components/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/',
