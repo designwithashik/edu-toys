@@ -15,7 +15,7 @@ const Blogs = () => {
                 </div>
                 <div className="">
                 <h1 className="text-xl font-bold">Compare SQL and NoSQL databases?</h1>
-                    <p className="py-6"><span className="font-bold text-[#FF1276]">Ans: </span> SQL: SQL databases are structured databases that use a predefined logic and SQL language for managing and querying data.
+                    <div className="py-6 text-sm"><span className="font-bold text-[#FF1276]">Ans: </span> SQL: SQL databases are structured databases that use a predefined logic and SQL language for managing and querying data.
                         <br />NoSQL: NoSQL databases are flexible databases that can handle unstructured and varied data formats without a predefined logic.
                         <br />The Comparison between these two are down below
                         <br />
@@ -48,7 +48,7 @@ const Blogs = () => {
 
 
 
-</p>
+</div>
                 </div>
                 <div className="">
                 <h1 className="text-xl font-bold">What is express js? What is Nest JS?</h1>
