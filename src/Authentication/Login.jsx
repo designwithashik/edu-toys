@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import PageTitle from '../components/PageTitle';
 
 const Login = () => {
     const { emailLogin,
@@ -38,6 +39,7 @@ const Login = () => {
     }
     return (
         <div className="hero min-h-[calc(100vh-300px)]" >
+            <PageTitle>Login</PageTitle>
             <div className="hero-content flex items-center flex-col md:flex-row">
                 <div className="flex justify-between w-full">
                     <img className='w-[70%] mx-auto lg:mx-0' src="https://i.ibb.co/yVWbnK1/Pngtree-illustration-of-kids-playing-games-4737644.png" alt="" />

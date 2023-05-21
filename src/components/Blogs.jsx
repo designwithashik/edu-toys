@@ -1,8 +1,10 @@
 import React from 'react';
+import PageTitle from './PageTitle';
 
 const Blogs = () => {
     return (
         <div>
+            <PageTitle>Blogs</PageTitle>
                   <h2 className="text-3xl  text-center font-bold mb-4 text-[#FF1276]">Blogs</h2>
             <div className="flex gap-5 flex-col">
                 <div className="">

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import PageTitle from '../PageTitle';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -52,6 +53,7 @@ const MyToys = () => {
     
     return (
       <div className='overflow-x-scroll lg:overflow-hidden'>
+        <PageTitle>My Toys</PageTitle>
 
       <h2 className="text-3xl  text-center font-bold mb-4 text-[#FF1276]">My Toys</h2>
         
