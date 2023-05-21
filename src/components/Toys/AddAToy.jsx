@@ -15,7 +15,7 @@ const AddAToy = () => {
         const sellerName = form.sellerName.value
         const sellerEmail = form.sellerEmail.value
         const subCategory = form.subCategory.value;
-        const price = parseFloat(form.price.value)
+        const price = parseFloat(form.price.value).toFixed(2)
         const quantity = form.quantity.value
         const rating = form.rating.value
         const picture = form.picture.value
@@ -36,7 +36,7 @@ const AddAToy = () => {
 
 
        
-            fetch('http://localhost:3000/toys', {
+            fetch('https://edu-toys-server.vercel.app/toys', {
                 method: 'POST',
                 headers: {
                     'content-type':'application/json'
@@ -46,6 +46,8 @@ const AddAToy = () => {
                 .then(res => res.json())
               .then(data => {
                 console.log(data)
+                if (data.acknowledged) {
+                  form.reset()
                 Swal.fire({
                   position: 'center',
                   icon: 'success',
@@ -53,11 +55,12 @@ const AddAToy = () => {
                   showConfirmButton: false,
                   timer: 1500
                 })
+                }
               })
        
     }
     return (
-      <div>
+      <div className='my-9'>
         
           <PageTitle>Add a Toy</PageTitle>
             <div className="max-w-xl mx-auto p-4 bg-white shadow rounded-xl">

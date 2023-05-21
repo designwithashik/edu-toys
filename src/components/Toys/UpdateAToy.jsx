@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import PageTitle from '../PageTitle';
 
 const UpdateAToy = () => {
     const [toy, setToy] = useState([])
     const {id} = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:3000/toy/${id}`)
+        fetch(`https://edu-toys-server.vercel.app/toy/${id}`)
             .then(res => res.json())
         .then(data=>setToy(data))
     }, [])
@@ -29,8 +30,8 @@ const UpdateAToy = () => {
         const name = form.name.value;
         const sellerName = form.sellerName.value
         const sellerEmail = form.sellerEmail.value
-        const subCategory = form.subCategory.value;
-        const price = form.price.value
+      const subCategory = form.subCategory.value;
+      const price = parseFloat(form.price.value)
         const quantity = form.quantity.value
         const rating = form.rating.value
         const picture = form.picture.value
@@ -51,7 +52,7 @@ const UpdateAToy = () => {
 
 
        
-            fetch(`http://localhost:3000/toy/${id}`, {
+            fetch(`https://edu-toys-server.vercel.app/toy/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type':'application/json'
@@ -61,18 +62,21 @@ const UpdateAToy = () => {
                 .then(res => res.json())
               .then(data => {
                 console.log(data)
-                Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: 'Your toy has been updated',
-                  showConfirmButton: false,
-                  timer: 1500
-                })
+                if (data.modifiedCount > 0) {
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Your toy has been updated',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                }
               })
        
     }
     return (
-        <div>
+      <div className='my-9'>
+        <PageTitle>Update a Toy</PageTitle>
             <div>
             <div className="max-w-xl mx-auto p-4 bg-white shadow rounded-xl">
       <h2 className="text-3xl  text-center font-bold mb-4 text-[#FF1276]">Update a Toy</h2>
@@ -129,7 +133,7 @@ const UpdateAToy = () => {
                         >
                             <option disabled value=''>Which Category?</option>
                             <option value="Language Toys">Language Toys</option>
-                            <option value="Math Toys">Math Toys</option>
+                            <option value="Science Toys">Science Toys</option>
                             <option value="Engineering Toys">Engeneeering Toys</option>
           </select>
         </div>

@@ -48,7 +48,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div className="hero min-h-[calc(100vh-300px)]  " >
+        <div className="hero min-h-[calc(100vh-400px)]  " >
             <PageTitle>SignUp</PageTitle>
             <div className="hero-content flex-col md:flex-row">
                 <div className="flex justify-between w-full">

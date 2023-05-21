@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'add-a-toy',
-                element: <AddAToy/>
+                element: <PrivateRoute><AddAToy/></PrivateRoute>
             },
             {
                 path: 'blogs',
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
             {
                 path: 'toy/:id',
                 element: <PrivateRoute><SingleToyDetails /></PrivateRoute>,
-                loader: ({params})=>fetch(`http://localhost:3000/toy/${params.id}`)
+                loader: ({params})=>fetch(`https://edu-toys-server.vercel.app/toy/${params.id}`)
             },
             {
                 path: 'update-toy/:id',

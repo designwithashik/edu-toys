@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
+import React, {useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageTitle from '../PageTitle';
 
 const AllToys = () => {
-  const { user, } = useContext(AuthContext)
   const [toys, setToys] = useState([])
   const [name, setName] = useState('')
   const [sort, setSort] = useState('')
   
   useEffect(() => {
-    fetch(`http://localhost:3000/toy?name=${name}&sort=${sort}`)
+    fetch(`https://edu-toys-server.vercel.app/toy?name=${name}&sort=${sort}`)
         .then(res => res.json())
       .then(data => {
         setToys(data)
@@ -26,21 +24,21 @@ const AllToys = () => {
     const sort = event.target.value;
     console.log(sort)
     setSort(sort)
-
     }
     
     
     return (
-      <div className='overflow-x-scroll lg:overflow-hidden'>
+      <div className='overflow-x-scroll lg:overflow-hidden mt-5'>
       <PageTitle>All Toys</PageTitle>
       <h2 className="text-3xl text-[#FF1276] text-center font-bold mb-4">All Toys</h2>
+        <div className="flex flex-col lg:flex-row justify-center  my-5">
         <form onSubmit={handleSearch} className="flex justify-center  my-5">
-          <input type="text" placeholder="Search A Toy" name='name' className="input w-1/2 input-bordered" />
-          <button type='submit' className="btn btn-ghost btn-circle mr-auto">
+          <input type="text" placeholder="Search A Toy" name='name' className="input input-bordered" />
+          <button type='submit' className="btn btn-ghost btn-circle">
           
       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-          </button>
-          <div className="mb-4">
+          </button></form>
+          <div className="mb-4 ml-auto">
           <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="subCategory">
             Sort By Price:
           </label>
@@ -53,7 +51,7 @@ const AllToys = () => {
                             <option value="">Descending</option>
           </select>
         </div>
-</form>
+</div>
 
             <table className="table w-full ">
     {/* head */}

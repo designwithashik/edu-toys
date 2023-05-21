@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 export const AuthContext = createContext(null);
-import {GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { app } from '../firebase/firebase.config';
 const AuthProvider = ({ children }) => {
 
@@ -37,14 +37,14 @@ const AuthProvider = ({ children }) => {
         return () => {
             unsubscribe()
         }
-    },[])
-    
-    
+    }, [])
+
+
 
     // Toys Data
-    const[toys, setToys]= useState([])
+    const [toys, setToys] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3000/toys')
+        fetch('https://edu-toys-server.vercel.app/toys')
             .then(res => res.json())
             .then(data => setToys(data))
     }, [])

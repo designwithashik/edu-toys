@@ -11,7 +11,7 @@ const TopPicks = () => {
 
             <h2 className='text-center font-bold text-[#FF1276] mb-7'>Top Picks</h2>
             <div className="carousel bg-purple-100 carousel-center max-w-full p-4 space-x-4 rounded-box">
-                {toys.slice(0,6).map(toy=><div className="carousel-item">
+                {toys.slice(0,6).map(toy=><div key={toy._id} className="carousel-item">
                     
                     <div>
                         <img  src={toy.picture} className="rounded-box h-[80%] w-72 object-cover" />
