@@ -15,7 +15,7 @@ const AddAToy = () => {
         const sellerName = form.sellerName.value
         const sellerEmail = form.sellerEmail.value
         const subCategory = form.subCategory.value;
-        const price = form.price.value
+        const price = parseFloat(form.price.value)
         const quantity = form.quantity.value
         const rating = form.rating.value
         const picture = form.picture.value
@@ -123,7 +123,7 @@ const AddAToy = () => {
           </label>
           <input
             className="border border-gray-300 rounded px-3 py-2 w-full"
-            type="number"
+            type="text"
             id="price"
             name="price"
           />
