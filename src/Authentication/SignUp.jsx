@@ -7,7 +7,7 @@ import PageTitle from '../components/PageTitle';
 
 const SignUp = () => {
     const { emailSignUp,
-        googleLogIn, error, setError } = useContext(AuthContext);
+     error, setError } = useContext(AuthContext);
 
     const handleEmailSignUp = (event) => {
         setError('')
@@ -41,12 +41,7 @@ const SignUp = () => {
             form.reset()
     }
 
-    const handleGoogleSignUp = () => {
-        googleLogIn()
-            .then(result => {
-                console.log(result.user)
-            })
-    }
+    
     return (
         <div className="hero min-h-[calc(100vh-400px)]  " >
             <PageTitle>SignUp</PageTitle>
@@ -82,11 +77,7 @@ const SignUp = () => {
 
                         </form>
                         <p>Already have an Account? <Link to='/login' className='text-accent font-bold'>Click to LogIn</Link></p>
-                        
-                        <p className='w-full font-medium text-center mt-4'>Or</p>
-                        <div className="flex justify-center mt-2">
-                            <button onClick={handleGoogleSignUp} className="btn btn-outline   rounded-lg "><img className='w-9 mr-1' src="https://i.ibb.co/jR7PDsb/google-logo-9824.png" alt="" /> Continue with Google</button>
-                        </div>
+                                                
                     </div>
                 </div>
             </div>

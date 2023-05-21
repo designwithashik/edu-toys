@@ -46,7 +46,7 @@ const AllToys = () => {
             className="border border-gray-300 rounded px-3 py-2 w-full"
             id=""
                         >
-                            <option disabled value=''>Which Order?</option>
+                            <option value=''>Which Order?</option>
                             <option value="asc">Ascending</option>
                             <option value="">Descending</option>
           </select>
